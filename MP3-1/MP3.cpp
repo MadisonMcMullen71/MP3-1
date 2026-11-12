@@ -67,25 +67,67 @@ int indexOfLargest(double values[], int count) {
 
 int main() {
 	const int MAX_FILLUPS = 20;
-	double amount;
-	char unit;
-	double pricePerUnit;
-	double miles;
-	double cost;
-	double values[MAX_FILLUPS] = { 1, 1, 1, };
-	int count = 3;
+	const int MIN_FILLUPS = 1;
+	int numberFillups = 0;
+	int odometer[MAX_FILLUPS + 1];
+	double amount[MAX_FILLUPS];
+	char unit[MAX_FILLUPS];
+	double pricePerUnit[MAX_FILLUPS];
+	double miles[MAX_FILLUPS];
+	double cost[MAX_FILLUPS];
+	double values[MAX_FILLUPS]; // = { 1, 1, 1, };
+	int count; // = 3;
+	int totalspent[MAX_FILLUPS];
+	double gallons[MAX_FILLUPS];
+	double milesPerGallon[MAX_FILLUPS];
+	double costPerMile[MAX_FILLUPS];
+	double budget;
+
+	//have user give starting odometer
+	cout << "Enter starting odometer: ";
+	cin >> odometer[0];
+
+	while (true) {
+		cout << "Enter number of fill ups (1-20): ";
+		cin >> numberFillups;
+		if (numberFillups <= MAX_FILLUPS && numberFillups >= MIN_FILLUPS) {
+			break;
+		}
+		else{
+			cout << "Number does not fall into range" << endl;
+		}
+	}
+
+	//have user give budget for trip
+	cout << "Enter fuel budget for trip: ";
+	cin >> budget;
+
+	//Have user enter literally all the inputs
+	for (int i = 0; i < numberFillups; i++) {
+		cout << "Fill-up " << i + 1 << " (odometer, amount, G or L, price, total): ";
+		cin >> odometer[i + 1] >> amount[i] >> unit[i] >> pricePerUnit[i] >> totalspent[i];
+
+	}
+
+
 	
-	
+	//ignore!! was for commits
 	//cin >> amount >> unit >> pricePerUnit >> miles;
 	//cout << toGallons(amount, unit) << endl;
-	//double gallons = toGallons(amount, unit);
-	//cout << fillUpCost(amount, pricePerUnit);
-
-	//cout << milesPerGallon(miles, gallons);
 	
+	//cout << fillUpCost(amount, pricePerUnit);
+	//cout << milesPerGallon(miles, gallons);
+	//cout << sumOf(values, count);
+	//cout << indexOfSmallest(values, count);
+	//cout << indexOfLargest(values, count);
 
-	cout << sumOf(values, count);
-	cout << indexOfSmallest(values, count);
-	cout << indexOfLargest(values, count);
+
+
+
+
+
+
+
+
 	return 0;
 }
