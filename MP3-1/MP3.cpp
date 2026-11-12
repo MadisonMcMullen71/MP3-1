@@ -6,7 +6,7 @@ using namespace std;
 //converting liters to gallons
 double toGallons(double amount, char unit) {
 	const double LITERSPERGALLON = 0.26417205;
-	if (unit == 'i' || unit == 'L') {
+	if (unit == 'l' || unit == 'L') {
 		amount = amount * LITERSPERGALLON;
 		return amount;
 	}
@@ -79,9 +79,11 @@ int main() {
 	int count; // = 3;
 	int totalspent[MAX_FILLUPS];
 	double gallons[MAX_FILLUPS];
-	double milesPerGallon[MAX_FILLUPS];
-	double costPerMile[MAX_FILLUPS];
+	double mpg[MAX_FILLUPS];
+	double cpm[MAX_FILLUPS];
 	double budget;
+	
+
 
 	//have user give starting odometer
 	cout << "Enter starting odometer: ";
@@ -107,10 +109,26 @@ int main() {
 		cout << "Fill-up " << i + 1 << " (odometer, amount, G or L, price, total): ";
 		cin >> odometer[i + 1] >> amount[i] >> unit[i] >> pricePerUnit[i] >> totalspent[i];
 
+
+
+		//if they give the wrong unit
+		if (unit[i] != 'l' && unit[i] != 'L' && unit[i] != 'g' && unit[i] != 'G') {
+			cout << "Unit must be L or G";
+		}
+		else if (odometer[i + 1] <= odometer[i]) {
+			cout << "Odometer had to be big then previous odometer input" << endl;
+		}
+		//calculating miles, cost, miles per gallon, cost per mile
+		gallons[i] = toGallons(amount[i], unit[i]);
+		miles[i] = odometer[i + 1] - odometer[i];
+		cost[i] = fillUpCost(amount[i], pricePerUnit[i]);
+		mpg[i] = milesPerGallon(miles[i], gallons[i]);
+		cpm[i] = costPerMile(cost[i], miles[i]);
+		
+
 	}
 
 
-	
 	//ignore!! was for commits
 	//cin >> amount >> unit >> pricePerUnit >> miles;
 	//cout << toGallons(amount, unit) << endl;
