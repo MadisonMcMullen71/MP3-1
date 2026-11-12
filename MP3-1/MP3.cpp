@@ -19,13 +19,36 @@ double fillUpCost(double amount, double pricePerUnit) {
 	return totalcost;
 }
 
+//calculating miles per gallon
+double milesPerGallon(double miles, double gallons) {
+	double costPerGallon;
+	costPerGallon = miles / gallons;
+	return costPerGallon;
+}
+
+//calculating cost per mile
+double costPerMile(double cost, double miles) {
+	double costPerMile;
+	costPerMile = cost / miles;
+	return costPerMile;
+}
+
+
+
+
 int main() {
 	double amount;
 	char unit;
 	double pricePerUnit;
-	cin >> amount >> unit >> pricePerUnit;
+	double miles;
+	double cost;
+	
+	cin >> amount >> unit >> pricePerUnit >> miles;
 	cout << toGallons(amount, unit) << endl;
+	double gallons = toGallons(amount, unit);
 	cout << fillUpCost(amount, pricePerUnit);
+
+	cout << milesPerGallon(miles, gallons);
 
 
 }
