@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="MP3-1/MP3-1.vcxproj" />
+  <Project Path="MP3-1/MP3-1.vcxproj" Id="cc6a9867-62a2-4630-b57a-980995422280" />
 </Solution>
