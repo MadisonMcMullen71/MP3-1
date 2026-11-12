@@ -20,7 +20,7 @@ double fillUpCost(double amount, double pricePerUnit) {
 	totalcost = amount * pricePerUnit;
 	return totalcost;
 }
-
+ 
 // calculating miles per gallon
 double milesPerGallon(double miles, double gallons) {
 	double mpgVal;
